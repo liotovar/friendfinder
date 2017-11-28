@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html>
+  <header>
+    <title>Friend Finder</title>  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </header>
+  <body>
+    <div class = "container">
+    <div>
+      <h1>Survey questions</h1>
+    </div>
+    <div>
+      <h2>About you</h2>
+      <h4>Name (Required)</h4>
+        <input type="text" id="name" required> 
+      <h4>Link to photo image (required)</h4>
+        <input type="text" id="photo" required>
+      <h3>Question 1</h3>
+      <h4>Do you like to watch sports?</h4>
+        <select data-placeholder="" id="q1">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 2</h3>
+      <h4>Do you like Chicago Sports?</h4>
+        <select id="q2">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 3</h3>
+      <h4>Do you prefer Cubs over White Sox?</h4>
+        <select id="q3">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 4</h3>
+      <h4>You enjoy watching football?</h4>
+        <select id="q4">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 5</h3>
+      <h4>Do you like to play sports?</h4>
+        <select id="q5">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 6</h3>
+      <h4>You rather watch than play sports.</h4>
+        <select id="q6">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 7</h3>
+      <h4>Do you enjoy watching soccer?</h4>
+        <select id="q7">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 8</h3>
+      <h4>You don't care about sports?</h4>
+        <select id="q8">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 9</h3>
+      <h4>Michael Jordan is the greatest NBA player of all time.</h4>
+        <select id="q9">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <h3>Question 10</h3>
+      <h4>Your favorite movie is Space Jam.</h4>
+        <select id="q10">
+          <option value=""></option>
+          <option value="1">1 - Strongly Disagree</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Strongly Agree</option>
+        </select>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-primary submit">Submit</button>
+    </div>
+  </div>
+    <script type="text/javascript">
+      $(".submit").on("click", function(event) {
+      event.preventDefault();
+
+      // Here we grab the form elements
+      var newFriend = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+        values: [$("#q1").val(),
+        $("#q2").val(),
+        $("#q3").val(),
+        $("#q4").val(),
+        $("#q5").val(),
+        $("#q6").val(),
+        $("#q7").val(),
+        $("#q8").val(),
+        $("#q9").val(),
+        $("#q10").val()
+        ]
+      };
+
+      console.log(newFriend);
+      var currentUrl = window.location.origin;
+      $.post(currentUrl + "/api/friends", newFriend,
+        function(data) {
+
+        alert("Your new friend is ");
+
+        });
+
+    });
+    </script>
+  </body>
+</html>
